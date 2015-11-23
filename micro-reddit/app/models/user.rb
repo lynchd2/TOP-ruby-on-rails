@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :posts
+	has_many :comments
 	validates :name, presence: true
 	VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, 
