@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RestTester</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<h1> Welcome to the Rest-ful web page!</h1>
+	<p> Below is the view from the user controller</p>
+
+	<%= yield %>
+
+	<p> I hope you enjoyed the page!</p>
+
+</body>
+</html>
