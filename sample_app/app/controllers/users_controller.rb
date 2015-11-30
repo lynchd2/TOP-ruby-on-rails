@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   		flash[:success] = "WELCOME TO THE SAMPLE APP!!!1!"
   		redirect_to @user
   	else
+  		flash.now[:error] = "INVALID!"
   		render :new
-  		flash[:error] = "INVALID!"
   	end
   end
 
