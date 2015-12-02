@@ -1,9 +1,15 @@
 <% provide(:title, @user.name) %>
+<% if flash[:success] %>
+	<h2>
+	<div id="error_explanation">
+		<div class="alert alert-success">
+			<%= flash[:success]%></h2>
+		</div>
+	</div>
+<% end %>
 <div class = "row">
 	<aside class = "col-md-4">
 		<section class = "user_info">
-			<%= flash[:success] %>
-			<h1>
 				<%= gravatar_for(@user) %>
 				<%= @user.name %>
 			</h1>
