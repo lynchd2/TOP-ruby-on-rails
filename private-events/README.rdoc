@@ -1,0 +1,1 @@
+This rails app is part of the Rails section in the Odin Project online curriculum. 
