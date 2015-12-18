@@ -1,0 +1,13 @@
+<% flash.each do |name, msg| %>
+   <%= content_tag :div, msg, class: "alert alert-info" %>
+<% end %>
+
+<h1> Please sign up</h1>
+
+<%= form_for(@user) do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.submit "submit" %>
+
+<% end %>
