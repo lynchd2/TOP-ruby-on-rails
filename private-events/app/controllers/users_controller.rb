@@ -5,11 +5,13 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @events = @user.events
   end
 
   def create
   	@user = User.new(user_params)
   	if @user.save
+      log_in(@user)
   		flash[:success] = "You have successfully been added to the part-a!"
   		redirect_to @user
   	else

@@ -4,4 +4,12 @@
 <h2>You are number <%= @user.id%> and your name is:<h2>
 <%= @user.name %>
 
+<h3>Here are your events, <%= @user.name %></h3>
+Event:<% @events.each do |event| %>
+	<h5>Title: <%= event.title%><h5>
+	<p>Date: <%= event.date%><h5>
+	<p>Description: <%= event.description%><p>
+<% end %>
+
 <h2> Go back to the sign-up page: <%= link_to "New User", new_user_path %><h2>
+<%= link_to "Log out", sessions_destroy_path, method: "delete" %>
