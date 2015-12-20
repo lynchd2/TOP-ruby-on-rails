@@ -1,15 +1,45 @@
 <% flash.each do |name, msg| %>
    <%= content_tag :div, msg, class: "alert alert-info" %>
 <% end %>
-<h2>You are number <%= @user.id%> and your name is:<h2>
-<%= @user.name %>
+<h2>You are number <%= @user.id%> and your name is: <%= @user.name %><h2>
 
-<h3>Here are your events, <%= @user.name %></h3>
-Event:<% @events.each do |event| %>
-	<h5>Title: <%= event.title%><h5>
-	<p>Date: <%= event.date%><h5>
-	<p>Description: <%= event.description%><p>
+<h3>Here are events that you have attended, <%= @user.name %></h3>
+<% if @previous_events %>
+	<% @previous_events.each do |event| %>
+		<h2>Event:</h2>
+		<h5>Title: <%= event.title%><h5>
+		<p>Date: <%= event.date%><h5>
+		<p>Description: <%= event.description%><p>
+		</br>
+		</br>
+	<% end %>
+
+	<% else %>
+		<h2> There have been no previous events attended</h2>
 <% end %>
+
+<h3>Here are events that you have attended, <%= @user.name %></h3>
+<% if @upcoming_events %>
+	<% @upcoming_events.each do |event| %>
+		<h2>Event:</h2>
+		<h5>Title: <%= event.title%><h5>
+		<p>Date: <%= event.date%><h5>
+		<p>Description: <%= event.description%><p>
+		</br>
+		</br>
+	<% end %>
+
+	<% else %>
+		<h2> There are no upcoming events</h2>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2> Want to see all the events that everyone has created? <%= link_to "click here", events_path %></h2>
+
+<h2><%= link_to "Click Here", new_event_path%> to Create a new event</h2>
 
 <h2> Go back to the sign-up page: <%= link_to "New User", new_user_path %><h2>
 <%= link_to "Log out", sessions_destroy_path, method: "delete" %>

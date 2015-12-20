@@ -1,0 +1,37 @@
+<% if @events_past.length > 0 %>
+	<% @events_past.each do |event| %>
+		<h3><%=event.creator != nil ? event.creator.name : "NO NAME"%> created the event called <%=event.title%></h1>
+		<h4>These are the people that attended the past event:</h2>
+			<ul><%=event.attendees.each do |attendee| %>
+				<li><%= attendee %></li>
+			<% end %>
+		</ul>
+		</br>
+		</br>
+	<% end %>
+
+	<% else %>
+	<h2>There are no past events</h2>
+<% end %>
+		</br>
+		</br>
+		</br>
+		</br>
+
+<% if @events_future.length > 0 %>
+	<% @events_future.each do |event| %>
+		<h3><%=event.creator != nil ? event.creator.name : "NO NAME"%> created the event called <%=event.title%></h1>
+		<h4>These are the people that will attend the future event:</h2>
+			<ul><%=event.attendees.each do |attendee| %>
+				<li><%= attendee %></li>
+			<% end %>
+		</ul>
+		</br>
+		</br>
+	<% end %>
+
+<% else %>
+	<h2>There are future events</h2>
+<% end %>
+
+<h2><%=link_to "Click Here", current_user %> to go back to your event page</h2>

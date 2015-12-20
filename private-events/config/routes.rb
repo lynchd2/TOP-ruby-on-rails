@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'events/create'
+
   get 'sessions/new'
 
   post 'sessions/create'
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   delete 'sessions/destroy'
 
   resources :users
+
+  resources :events,          only: [:new, :create, :index]
 
   root "users#new"
 
