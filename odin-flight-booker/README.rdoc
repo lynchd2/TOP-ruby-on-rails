@@ -1,0 +1,1 @@
+This is the Odin-flight-booker rails app in The Odin Project
