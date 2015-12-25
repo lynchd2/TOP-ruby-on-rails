@@ -12,17 +12,17 @@ all_airports = airports.map do |code, city|
 	Airport.create(airport_code: code, city: city)
 end
 
-10.times do 
+200.times do 
 
-index_for_airports = airports.length - 1
-to_airport_id = rand(0..index_for_airports)
-from_airport_id = rand(0..index_for_airports)
+index_for_airports = airports.length
+to_airport_id = rand(1..index_for_airports)
+from_airport_id = rand(1..index_for_airports)
 until from_airport_id != to_airport_id
-	from_airport_id = rand(0..index_for_airports)
+	from_airport_id = rand(1..index_for_airports)
 end
   Flight.create!(to_airport_id: to_airport_id,
                from_airport_id: from_airport_id,
                duration: "#{rand(0..24)}:" + "#{rand(00..60)}:" + "#{rand(0..60)}",
-               start_time: DateTime.now.advance(months: rand(0..1), days: rand(0..15), hours: rand(0..24)))
+               start_time: DateTime.now.advance(months: rand(0..1), days: rand(0..15), hours: rand(0..24)).strftime("%Y-%m-%d"))
 
 end

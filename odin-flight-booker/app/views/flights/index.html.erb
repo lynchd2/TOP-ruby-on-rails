@@ -1,12 +1,38 @@
-<%= form_for(:flights, method: 'get') do |f| %>
-	<%= f.label "Start:" %>
-	<%= f.select(:from_airport_id, options_for_select(@airports)) %>
+<%= form_for(root_path, method: 'get') do |f| %>
 
-	<%= f.label "Finish:" %>
-	<%= f.collection_select(:to_airport_id, Airport.all, :id, :city) %>
+	<div class ="start">
+		<%= f.label "Start:" %>
+		<%= f.select(:from_airport_id, options_for_select(@airports)) %>
+	</div>
 
-	<%= f.label "Dates:" %>
-	<%= f.select(:date, options_for_select(@dates)) %>
+	<div class ="finish">
+		<%= f.label "Finish:" %>
+		<%= f.collection_select(:to_airport_id, Airport.all, :id, :city) %>
+	</div>
+
+	<div class = "passangers">
+		<%= f.label "Select the number of passangers"%>
+		<%= f.select(:passangers, options_for_select(@passangers)) %>
+	</div>
+
+	<div class ="dates">
+		<%= f.label "Dates:" %>
+		<%= f.select(:date, options_for_select(@dates)) %>
+	</div>
 
 	<%= f.submit "Search" %>
 <% end %>
+
+<% if @flights.length > 0 %>
+	<% @flights.each do |flight| %>
+
+		<h1> You have picked flying out of: <%= flight.from_airport.city%></h1>
+		<h1> And you have picked to arrive at: <%= flight.to_airport.city %><h1>
+		<h1> And the date you have picked is: <%= flight.start_time%><h1>
+
+	<% end %>
+
+	<% else %>
+		<%= flash[:error]%>
+<% end %>
+
