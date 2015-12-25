@@ -1,0 +1,12 @@
+<%= form_for(:flights, method: 'get') do |f| %>
+	<%= f.label "Start:" %>
+	<%= f.select(:from_airport_id, options_for_select(@airports)) %>
+
+	<%= f.label "Finish:" %>
+	<%= f.collection_select(:to_airport_id, Airport.all, :id, :city) %>
+
+	<%= f.label "Dates:" %>
+	<%= f.select(:date, options_for_select(@dates)) %>
+
+	<%= f.submit "Search" %>
+<% end %>
