@@ -1,0 +1,12 @@
+<% i = 1 %>
+<% @booking.passengers.each do |passenger| %>
+	Passenger Number: <%= i %>
+	</br>
+	Name: <%= passenger.name %>
+	</br>
+	Email: <%= passenger.email %>
+	</br>
+	<% i += 1 %>
+	</br>
+	</br>
+<% end %>

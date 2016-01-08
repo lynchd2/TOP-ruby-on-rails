@@ -1,0 +1,24 @@
+<h1>Poo!</h2>
+<%= @flight %>
+<%= @booking %>
+</br>
+</br>
+<%= form_for(@booking, url: { action: "create" }) do |f| %>
+
+	<%= hidden_field_tag(:flight_id, params[:flight_id]) %>
+	<%= f.hidden_field :flight_id %>
+
+	<%= f.fields_for :passengers do |passenger| %>
+	  <%= passenger.label :name %>
+	  <%= passenger.text_field :name %>
+
+	  <%= passenger.label :email %>
+	  <%= passenger.email_field :email %>
+	</br>
+	</br>
+
+	<% end %>
+
+	<%= f.submit "Submit" %>
+
+<% end %>

@@ -10,9 +10,9 @@
 		<%= select_tag(:to_airport_id, options_for_select(@airports)) %>
 	</div>
 
-	<div class = "passangers">
-		<%= label_tag "Select the number of passangers"%>
-		<%= select_tag(:passangers, options_for_select(@passangers)) %>
+	<div class = "passengers">
+		<%= label_tag "Select the number of passengers"%>
+		<%= select_tag(:passengers, options_for_select([1,2,3,4])) %>
 	</div>
 
 	<div class ="dates">
@@ -23,16 +23,23 @@
 	<%= submit_tag "Search" %>
 <% end %>
 
+
 <% if @flights.length > 0 %>
-	<% @flights.each do |flight| %>
 
-		<h1> You have picked flying out of: <%= flight.from_airport.city%></h1>
-		<h1> And you have picked to arrive at: <%= flight.to_airport.city %><h1>
-		<h1> And the date you have picked is: <%= flight.start_time%><h1>
+	<%= form_tag(new_booking_path, method: 'get') do %>
 
+		<% @flights.each do |flight| %>
+			<h1> This is flight number <%=flight.id%> 
+			<h1> You have picked flying out of: <%= flight.from_airport.city%></h1>
+			<h1> And you have picked to arrive at: <%= flight.to_airport.city %><h1>
+			<h1> And the date you have picked is: <%= flight.start_time%><h1>
+			<h1> With: <%= @passengers%> passengers<h1>
+
+			<%= hidden_field_tag(:passengers, @passengers) %>
+			<%= radio_button_tag(:flight_id, flight.id) %>
+		<% end %>
 	<% end %>
-
-	<% else %>
-		<%= flash[:error]%>
+</br>
+	<%= submit_tag "Book" %>
 <% end %>
 

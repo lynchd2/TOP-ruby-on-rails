@@ -3,7 +3,7 @@ class FlightsController < ApplicationController
 	def index
 		@airports = Airport.all.map {|airport| [airport.city , airport.id]}
 		@dates = Flight.all.order('start_time ASC').map {|flight| flight.start_time}.uniq
-		@passangers = [1,2,3,4]
+		@passengers = params[:passengers]
 		@to_search = params[:to_airport_id]
 		@from_search = params[:from_airport_id]
 		@date = params[:date]
