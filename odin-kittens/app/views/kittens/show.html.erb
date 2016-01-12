@@ -1,0 +1,9 @@
+<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+This is Kitten number <%=@kitten.id %>
+<h1>Name: <%= @kitten.name %></h1>
+<p>Age: <%= @kitten.age %></p>
+<p>Softness: <%= @kitten.softness %></p>
+<p>Cuteness: <%= @kitten.cuteness %></p>

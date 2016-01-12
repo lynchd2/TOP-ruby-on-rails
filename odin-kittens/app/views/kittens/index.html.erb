@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<% @kittens.each do |kitten| %>
+	Name: <%= kitten.name %>
+	<ol>
+		<li>Age: <%= kitten.age %></li>
+		<li>Softness: <%= kitten.softness %></li>
+		<li>Cuteness: <%= kitten.cuteness %></li>
+	</ol>
+
+	<%= link_to "Delete kitten", kitten, method: :delete, data: {confirm: "Are you sure?"} %>
+	<%= link_to "Add kitten", new_kitten_path %>
+	<%= link_to "Edit kitten(how?)", edit_kitten_path(kitten) %>
+	<%= link_to "Show kitten", kitten_path(kitten) %>
+
+	</br>
+	</br>
+
+<% end %>
