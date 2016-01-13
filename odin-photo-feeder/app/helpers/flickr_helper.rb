@@ -1,6 +1,6 @@
 module FlickrHelper  
   def user_photos(user_id)
-    flickr.photos.search(:user_id => user_id)
+    flickr.people.getPhotos(:user_id => user_id)
   end
   
   def render_flickr_sidebar_widget(user_id)
