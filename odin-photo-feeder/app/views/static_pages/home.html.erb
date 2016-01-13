@@ -1,0 +1,11 @@
+<h1> Static Page- Enter your Flickr ID </h1>
+
+<%= form_tag({controller: 'static_pages', action: 'home'}, {method: 'get'}) do %>
+	<%= label_tag :flickr_id %>
+	<%= text_field_tag :flickr_id %>
+	<%= submit_tag "Submit" %>
+<% end %>
+
+<% if @flickr_id %>
+	<%= render_flickr_sidebar_widget(@flickr_id) %>
+<% end %>
